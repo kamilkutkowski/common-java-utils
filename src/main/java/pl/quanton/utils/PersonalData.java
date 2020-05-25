@@ -19,10 +19,11 @@ public class PersonalData {
         return new HashMap<String, String>() {{
             put("name", name);
             put("lastname", getLastname());
+            put("gender", getGender());
             put("city", city);
             put("postalCode", getPostalCode());
             put("street", getStreet());
-            put("PESEL", getPesel());
+            put("pesel", getPesel());
         }};
     }
 
@@ -46,6 +47,19 @@ public class PersonalData {
 
     private String getStreet() {
         return Streets.values()[new Random().nextInt(Streets.values().length)].toString();
+    }
+
+    private String getGender() {
+        String gender = "";
+        if (Names
+                .valueOf(name)
+                .getGender()
+                .equals("W")) {
+            gender = "Kobieta";
+        } else {
+            gender = "Mężczyzna";
+        }
+        return gender;
     }
 
     /**
